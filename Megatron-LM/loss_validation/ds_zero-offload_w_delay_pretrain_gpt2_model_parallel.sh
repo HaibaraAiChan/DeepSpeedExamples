@@ -14,8 +14,8 @@ gpt_options=" \
        --model-parallel-size ${MP_SIZE} \
        --num-layers 4\
        --hidden-size 1024 \
-       --num-attention-heads 32 \
-       --batch-size 96 \
+       --num-attention-heads 16 \
+       --batch-size 24 \
        --seq-length 1024 \
        --max-position-embeddings 1024 \
        --train-iters 1000000 \
