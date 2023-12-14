@@ -171,7 +171,7 @@ def add_training_args(parser):
                        help='which backend to use for distributed '
                        'training. One of [gloo, nccl]')
 
-    group.add_argument('--local-rank', type=int, default=None,
+    group.add_argument('--local_rank', type=int, default=None,
                        help='local rank passed from distributed launcher')
 
     return parser
