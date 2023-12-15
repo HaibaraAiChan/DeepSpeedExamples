@@ -10,12 +10,13 @@ script_path=$(realpath $0)
 script_dir=$(dirname $script_path)
 
 config_json="$script_dir/ds_zero2_config.json"
+bs=10
 bert_options=" \
        --model-parallel-size ${MP_SIZE} \
-       --num-layers 4 \
+       --num-layers 24 \
        --hidden-size 1024 \
        --num-attention-heads 16 \
-       --batch-size 24 \
+       --batch-size ${bs} \
        --seq-length 512 \
        --max-preds-per-seq 80 \
        --max-position-embeddings 512 \
@@ -38,9 +39,7 @@ bert_options=" \
        --clip-grad 1.0 \
        --warmup .01 \
        --fp16 \
-       --fp32-layernorm \
-       --fp32-embedding \
-       &> bert_zero_2.log
+       &> bert_zero_2_numactl_0,2_pin_mem_bs_${bs}.log
 "
 bert_options="${bert_options}
                --deepspeed \
@@ -48,7 +47,7 @@ bert_options="${bert_options}
 "
 
 
-run_cmd="numactl --interleave=all \
+run_cmd="numactl --interleave=0,2 \
        deepspeed --num_nodes ${NUM_WORKERS} \
               --num_gpus ${NUM_GPUS_PER_WORKER} \
               pretrain_bert.py $@ ${bert_options}"
