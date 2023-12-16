@@ -62,6 +62,8 @@ python pretrain_bert.py \
        --fp16 \
        --fp32-embedding
 ```
+## BERT Pretraining with zero-offload and numactl  
+`bash scripts/ds_zero2_pretrain_bert_mp.sh`  
 
 ## GPT2 Pretraining
 `bash scripts/pretrain_gpt2.sh`
