@@ -1,0 +1,47 @@
+{
+  "train_batch_size": 4,
+  "gradient_accumulation_steps": 1,
+  "steps_per_print": 20,
+  "optimizer": {
+    "type": "Adam",
+    "params": {
+      "lr": 3e-5,
+      "weight_decay": 0.0,
+      "bias_correction": false
+    }
+  },
+  "zero_optimization": {
+    "stage": 2,
+    "offload_optimizer": {
+      "device": "cpu",
+      "pin_memory": false
+    }
+  },
+  "flops_profiler": {
+    "enabled": true,
+    "profile_step": 1,
+    "module_depth": -1,
+    "top_modules": 1,
+    "detailed": true,
+    "output_file": null
+  }, 
+  "zero_allow_untested_optimizer": true,
+  "gradient_clipping": 1.0,
+  "fp16": {
+    "enabled": true,
+    "loss_scale": 4096,
+    "loss_scale_window": 1000,
+    "hysteresis": 2,
+    "min_loss_scale": 1
+  },
+  "activation_checkpointing": {
+    "partition_activations": true,
+    "contiguous_memory_optimization": true
+  },
+  "wall_clock_breakdown": true,
+  "tensorboard": {                                                                                                                                          
+    "enabled": true,                                                                                                                                        
+    "output_path": "/home/jieliu/DeepSpeedExamples/Megatron-LM/scripts/log",                                                                                                                       
+    "job_name": "gpt_delay_param_update"                                                                                                                                 
+  }   
+}
