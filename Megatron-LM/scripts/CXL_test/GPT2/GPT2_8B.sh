@@ -13,7 +13,7 @@ bs=3
 nl=72
 h=3072
 np=100
-config_json="$script_dir/ds_zero-offload_10B_config.json"
+config_json="$script_dir/GPT2_8B_config.json"
 gpt_options=" \
        --model-parallel-size ${MP_SIZE} \
        --num-layers ${nl} \
