@@ -12,7 +12,7 @@ bs=8
 nl=53
 h=3072
 np=100
-config_json="$script_dir/ds_zero-offload_6B_config_pin.json"
+config_json="$script_dir/GPT2_6B_config.json"
 # gpt_options=" \
 #        --model-parallel-size ${MP_SIZE} \
 #        --num-layers ${nl} \
